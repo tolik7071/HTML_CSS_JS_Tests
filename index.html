@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="ru" version="1">
+  <head>
+    <title>Тестовая страница</title>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <meta http-equiv="refresh" content="10" />
+    <meta name="author" content="Anatoliy Goodz" />
+    <meta name="keywords" lang="en" content="Test page" />
+    <!--link rel="stylesheet" type="text/css" href="common.css" /-->
+  </head>
+  <style>
+    @import URL("common.css");
+  </style>
+  <body>
+    <p class="main_paragraph">This is a simple text.</p>
+    <br />
+    <p id="sriptable_color"></p>
+    <button type="button" onclick="document.getElementById('sriptable_color').style.background='red'">
+      Click Me!
+    </button>
+
+    <br />
+
+    <table class="table" frame="box" rules="all">
+      <caption>Моя первая таблица</caption>
+      <tr>
+        <th>1-ый стобец</th>
+        <th>2-ый стобец</th>
+      </tr>
+      <tr>
+        <td>ячейка 1,1</td>
+        <td>ячейка 1,2</td>
+      </tr>
+    </table>
+
+    <br />
+
+    <img src="myhome.png" width="25%" border="20" />
+
+    <br />
+
+    <!--a href="Кукушка.mp3">Играть Кукушка</a-->
+    <!--video controls="" autoplay="" name="media">
+      <source src="file:///D:/Projects/Tests/HTML/%D0%9A%D1%83%D0%BA%D1%83%D1%88%D0%BA%D0%B0.mp3" type="audio/mp3">
+    </video-->
+
+    <form action="mailto://tolik7071@gmail.com" enctype="text/plain">
+      Your name: <input type="text" value="Enter your name"/>
+      <br />
+      Gender:
+      <input name="GenderSelector" type="radio" value="10" checked=""/> Male
+      <input name="GenderSelector" type="radio" value="11" /> Female
+      <br />
+      <input name="AgreeSelector" type="checkbox" /> Agree
+      <br />
+      <input type="submit" />
+    </form>
+
+    <script type="text/javascript" src="final_data.js">
+    </script>
+  </body>
+</html>

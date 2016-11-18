@@ -1,0 +1,32 @@
+p.main_paragraph {
+  color: #ff0000;
+  background: yellow;
+  font-size: 48px;
+  white-space: 20px
+}
+
+@keyframes animation {
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+}
+
+p.main_paragraph {
+/*    width: 100px;
+    height: 100px;
+ */
+    background-color: red;
+    animation-name: animation;
+    animation-duration: 4s;
+}
+
+table.table {
+/*  background: yellow; */
+  border: 1px;
+  border-color: red;
+  font-size: 18px;
+  cellpadding: 10px;
+  animation-name: animation;
+  animation-duration: 4s;
+}
