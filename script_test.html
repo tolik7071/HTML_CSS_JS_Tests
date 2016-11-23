@@ -56,6 +56,32 @@
       document.write(typeof(this));
       document.write('<br />');
 
+      function Add(x1, x2) { return x1 + x2 }
+      function Mul(x1, x2) { return x1 * x2 }
+
+      var f1 = Add;
+      document.write(f1(1, 11));
+      document.write('<br />');
+
+      f1 = Mul;
+      document.write(f1(2, 11));
+      document.write('<br />');
+
+      var s1 = '10', s2 = 10;
+      document.write(s1 == s2);
+      document.write('<br />');
+      document.write(s1 === s2);
+      document.write('<br />');
+
+      var d1 = new Date()
+      if (d1 instanceof Object) {
+        document.write('It\'s a date');
+        document.write('<br />');
+      } else {
+        document.write(typeof(d1));
+        document.write('<br />');
+      }
+
     </script>
   </body>
 </html>
