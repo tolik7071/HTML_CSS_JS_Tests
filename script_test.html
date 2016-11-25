@@ -85,8 +85,9 @@
       document.write(typeof(array1));
       document.write('<br />');
 
-/*      var x = 1.5, cx = 10;
-      alert("cos(" + x + ") = " + cx);*/
+      var x = 1, cx = Math.cos(x);
+      document.write("cos(" + x + ") = " + cx);
+      document.write('<br />');
 
       var point = { x:10, y:55 };
       document.write(point.x);
@@ -98,8 +99,38 @@
       ];
 
       for (var index in persons) {
-        document.write(persons[index].x + ' : ' + persons[index].y);
+        document.write(index + ': ' + persons[index].x + ' : ' + persons[index].y);
         document.write('<br />');
+      }
+
+      var newDate = new Date();
+      document.write(newDate.constructor);
+      document.write('<br />');
+
+      var a1 = new Array();
+      a1[0] = 1;
+      a1[10000] = "это элемент 10,000";
+      document.write(a1.length);
+      document.write('<br />');
+      for (var i in a1) {
+        if (a1[i] != undefined) {
+          document.write(i + ': ' + a1[i]);
+          document.write('<br />');
+        }
+      }
+
+      document.write(a1.indexOf(10));
+      document.write('<br />');
+      document.write('<br />');
+      document.write('<br />');
+
+      a1 = [1, -8, 0, 99, -4];
+      var a2 = a1.filter(function(a) { return a > 0; } );
+      for (var i in a2) {
+        if (a2[i] != undefined) {
+          document.write(i + ': ' + a2[i]);
+          document.write('<br />');
+        }
       }
 
     </script>
