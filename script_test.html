@@ -82,6 +82,26 @@
         document.write('<br />');
       }
 
+      document.write(typeof(array1));
+      document.write('<br />');
+
+/*      var x = 1.5, cx = 10;
+      alert("cos(" + x + ") = " + cx);*/
+
+      var point = { x:10, y:55 };
+      document.write(point.x);
+      document.write('<br />');
+
+      var persons = [
+        { x:10, y:55 },
+        { x:44, y:0 }
+      ];
+
+      for (var index in persons) {
+        document.write(persons[index].x + ' : ' + persons[index].y);
+        document.write('<br />');
+      }
+
     </script>
   </body>
 </html>
