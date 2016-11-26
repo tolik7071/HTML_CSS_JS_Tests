@@ -133,6 +133,27 @@
         }
       }
 
+      document.write('<br />');
+      document.write('<br />');
+
+/*
+      for (property in document) {
+        document.write(property + ' : ' + typeof(property));
+        document.write('<br />');
+      }
+*/
+
+      function varArgs() {
+        for (i in arguments) {
+          document.write(arguments[i]);
+          document.write('<br />');
+        }
+
+        document.write(typeof(arguments.callee));
+      }
+
+      varArgs(1, 'test string', new Date());
+
     </script>
   </body>
 </html>
