@@ -150,9 +150,45 @@
         }
 
         document.write(typeof(arguments.callee));
+        document.write('<br />');
       }
 
       varArgs(1, 'test string', new Date());
+
+      var args = {
+        'Add' : function(x, y) { return x + y; },
+        'Subtract' : function(x, y) { return x - y; },
+      }
+
+      function Executer(operand, arg1, arg2) {
+        var result;
+
+        switch (operand) {
+          case 'Add':
+            result = arg1 + arg2;
+            break;
+          case 'Subtract':
+            result = arg1 - arg2;
+            break;
+        }
+
+        if (!result) {
+          throw new Error(operand + ': Unknown operand');
+        }
+
+        return result;
+      }
+
+      try {
+        var result = Executer('Add', 11, 22);
+        document.write(result);
+        document.write('<br />');
+      } catch (e) {
+        document.write('EXCEPTION: ' + e);
+        document.write('<br />');
+      } finally {
+
+      }
 
     </script>
   </body>
