@@ -190,6 +190,55 @@
 
       }
 
+      var line = {
+        p1 : { x:10, y:10 },
+        p2 : { x:20, y:10 },
+        distance : function() {
+          return Math.sqrt(
+            Math.pow(this.p2.x - this.p1.x, 2) +
+            Math.pow(this.p2.y - this.p1.y, 2));
+        }
+      }
+
+      document.write(line.distance());
+      document.write('<br />');
+
+      line.p2.x = 100;
+
+      document.write(line.distance());
+      document.write('<br />');
+
+      document.write('<br />');
+      document.write('<br />');
+
+      function SomeFunction(x, y, z) {
+        document.write('expected ' + arguments.callee.length);
+        document.write('<br />');
+
+        for (var index in arguments) {
+          document.write(index + ': ' + typeof(arguments[index]));
+          document.write('<br />');
+        }
+      }
+
+      SomeFunction(11, [8, -9, 'test'], 'test string', new Date());
+
+      document.write('<br />');
+      document.write('<br />');
+
+      function Square() {
+        return this.x * this.x;
+      }
+
+      var obj1 = {
+        x : 10
+      }
+
+      document.write(Square.call(obj1));
+      document.write('<br />');
+      document.write('<br />');
+      
+
     </script>
   </body>
 </html>
