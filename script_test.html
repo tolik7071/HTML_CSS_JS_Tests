@@ -237,7 +237,47 @@
       document.write(Square.call(obj1));
       document.write('<br />');
       document.write('<br />');
-      
+
+      var callMe = (function () {
+        var uniqeId = 0;
+
+        return function () { return uniqeId++; }
+      })();
+
+      document.write('id: ' + callMe());
+      document.write('<br />');
+      document.write('id: ' + callMe());
+      document.write('<br />');
+
+      document.write('<br />');
+      document.write('<br />');
+
+      function Point(x, y) {
+        if (x && y) {
+          this.x = x;
+          this.y = y;
+        } else {
+          this.x = 0, this.y = 0;
+        }
+      }
+
+      Point.prototype.distance = function() {
+        var result = 0
+
+        if (this.x && this.y) {
+          result = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+        }
+
+        return result;
+      }
+
+      var p1 = new Point(1, 1);
+      document.write(p1.x + ' : ' + p1.y + ' -> ', p1.distance());
+      document.write('<br />');
+
+      var p2 = new Point();
+      document.write(p2.x + ' : ' + p2.y + ' -> ', p2.distance());
+      document.write('<br />');
 
     </script>
   </body>
