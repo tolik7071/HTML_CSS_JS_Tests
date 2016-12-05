@@ -8,6 +8,7 @@
   </head>
   <body>
     <script lang="text/javascript">
+/*
       document.write("Hi!");
       document.write("<br />");
 
@@ -136,12 +137,10 @@
       document.write('<br />');
       document.write('<br />');
 
-/*
       for (property in document) {
         document.write(property + ' : ' + typeof(property));
         document.write('<br />');
       }
-*/
 
       function varArgs() {
         for (i in arguments) {
@@ -277,6 +276,72 @@
 
       var p2 = new Point();
       document.write(p2.x + ' : ' + p2.y + ' -> ', p2.distance());
+      document.write('<br />');
+      document.write('Is own? ' + p2.hasOwnProperty('distance'));
+      document.write('<br />');
+
+      p2.distance = function() {
+        return 'Opps!';
+      };
+
+      document.write(p2.distance());
+      document.write('<br />');
+      document.write('Is own? ' + p2.hasOwnProperty('distance'));
+      document.write('<br />');
+
+      document.write('<br />');
+      document.write('<br />');
+*/
+      function Point(x, y) {
+        if (x && y) {
+          this.x = x, this.y = y;
+        } else {
+          this.x = 0, this.y = 0;
+        }
+      }
+
+      Point.prototype.toString = function() {
+        return 'x = ' + this.x + ', y = ' + this.y;
+      }
+
+      var origin = new Point();
+      document.write(origin.toString());
+      document.write('<br />');
+
+      var point1 = new Point(10, 5);
+      document.write(point1.toString());
+      document.write('<br />');
+
+      function Line(p1, p2) {
+          if (p1 && p2) {
+            if (p1 instanceof Point && p2 instanceof Point) {
+              this.p1 = p1, this.p2 = p2;
+            }
+          } else {
+            this.p1 = new Point();
+            this.p2 = new Point();
+          }
+      }
+
+      Line.prototype.toString = function () {
+        return this.p1.toString() + '; ' + this.p2.toString();
+      }
+
+      Line.prototype.length = function () {
+        return Math.sqrt(
+          Math.pow(this.p2.x - this.p1.x, 2) +
+          Math.pow(this.p2.y - this.p1.y, 2)
+        );
+      }
+
+      var line1 = new Line();
+      document.write(line1.toString());
+      document.write('<br />');
+
+      var line2 = new Line(new Point(1, 5), new Point(2, 6));
+      document.write(line2.toString());
+      document.write('<br />');
+      document.write(line2.length());
       document.write('<br />');
 
     </script>
