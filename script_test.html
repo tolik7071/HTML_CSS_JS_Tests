@@ -300,6 +300,11 @@
         }
       }
 
+      // from a origin to this point
+      Point.prototype.distance = function () {
+        return Math.sqrt(this.x * this.x + this.y * this.y);
+      }
+
       Point.prototype.toString = function() {
         return 'x = ' + this.x + ', y = ' + this.y;
       }
@@ -307,9 +312,15 @@
       var origin = new Point();
       document.write(origin.toString());
       document.write('<br />');
+      document.write('distance : ' + origin.distance());
+      document.write('<br />');
 
       var point1 = new Point(10, 5);
       document.write(point1.toString());
+      document.write('<br />');
+      document.write('distance : ' + point1.distance());
+      document.write('<br />');
+
       document.write('<br />');
 
       function Line(p1, p2) {
