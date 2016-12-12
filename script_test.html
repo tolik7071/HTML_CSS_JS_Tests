@@ -292,6 +292,8 @@
       document.write('<br />');
       document.write('<br />');
 */
+
+/*
       function Point(x, y) {
         if (x && y) {
           this.x = x, this.y = y;
@@ -354,6 +356,38 @@
       document.write('<br />');
       document.write(line2.length());
       document.write('<br />');
+*/
+
+      function DoRegEx(str, reg) {
+        if (!(typeof(str) == 'string' &&
+            reg instanceof RegExp)) {
+              document.write('Wrong parameter(s)');
+              document.write('<br />');
+
+              return;
+        }
+
+        document.write('<p>');
+
+        document.write('Searched string: ' + str);
+        document.write('<br />');
+        document.write('RE: ' + reg.toString());
+        document.write('<br />');
+        document.write('Result:');
+        document.write('<br />');
+        var result = str.match(reg)
+        for (var i = 0; i < result.length; i++) {
+          document.write(i + ': ' + result[i]);
+          document.write('<br />');
+        }
+
+        document.write('<p/>');
+      }
+
+      DoRegEx('aaa', /a{2}/);
+      DoRegEx('JavaScript: The Definitive Guide', /[Jj]ava([Ss]cript)?(?=\:)/);
+      DoRegEx('Java: The Definitive Guide', /[Jj]ava([Ss]cript)?(?=\:)/);
+      DoRegEx('Java JAVA jAvA', /java/ig);
 
     </script>
   </body>
