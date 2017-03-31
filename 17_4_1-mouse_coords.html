@@ -1,0 +1,55 @@
+<html lang="ru" version="1">
+  <head>
+    <title>Тестовая страница #1</title>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <meta http-equiv="refresh" content="10" />
+    <meta name="author" content="Anatoliy Goodz" />
+    <meta name="keywords" lang="en" content="Test page" />
+  </head>
+  <style>
+   .tooltipShadow {
+      background-color: #ff00ff;
+   }
+
+   .tooltipContent {
+      left:  4px; top:  4px;
+      background-color: #ff0;
+      border: solid black 1px;
+      padding: 5px;
+      font: bold 10pt sans serif;
+   }
+  </style>
+
+  <script src="Tooltip.js">
+  </script>
+
+  <body onload="">
+     <h2>Tooltip</h2>
+     <p>Move the mouse over the text below:</p>
+     <div id="tooltip">
+        Hover over me
+     </div>
+     <a href="www.davidflanagan.com"
+      tooltip="good Java/JavaScript blog"
+      onmouseover="Tooltip.schedule(this, event)">
+         David Flanagan's blog
+     </a>
+
+     <script>
+      var tooltip = new Tooltip();
+
+      var e = document.getElementById('tooltip');
+      if (e) {
+         //e.style.backgroundColor = "lightblue";
+
+         e.onmouseenter = function() {
+            tooltip.show('This is a tooltip!', 100, 100);
+         }
+
+         e.onmouseleave = function() {
+            tooltip.hide();
+         }
+      }
+     </script>
+  </body>
+</html>
