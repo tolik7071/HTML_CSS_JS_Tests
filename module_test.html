@@ -1,0 +1,29 @@
+<html lang="ru" version="1">
+  <head>
+    <title>Тестовая страница #1</title>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <meta http-equiv="refresh" content="10" />
+    <meta name="author" content="Anatoliy Goodz" />
+    <meta name="keywords" lang="en" content="Test page" />
+  </head>
+  <style>
+
+  </style>
+  <body onload="">
+    <script>
+      var obj1 = {};
+      if (obj1.name == undefined) {
+         obj1.name = new String('Wow!');
+      }
+      document.write(obj1.name);
+      document.write('<br />');
+
+      var obj2 = new Object();
+      if (!obj2.current) {
+         obj2.current = new Date();
+      }
+      document.write(obj2.current);
+      document.write('<br />');
+    </script>
+  </body>
+</html>

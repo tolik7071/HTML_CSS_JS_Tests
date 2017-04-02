@@ -28,6 +28,8 @@
  * эмулировать полупрозрачность с помощью изображения формата GIF.
  */
 
+var Tooltip = new Tooltip();
+
 // Функция конструктор класса Tooltip
 function Tooltip() {
    this.tooltip = document.createElement("div"); // Создать div для тени
@@ -82,11 +84,14 @@ Tooltip.DELAY = 500; // миллисекунд после события mouseov
  * подсказки или отменяет ее запланированное появление.
  */
 Tooltip.prototype.schedule = function(target, e) {
-   alert('dd')
    // Получить текст для отображения. Если текст отсутствует
    // ничего не делать.
    var text = target.getAttribute("tooltip");
-   if (!text) return;
+   if (!text) {
+      return;
+   }
+
+   alert(Geometry);
 
    // Объект события хранит оконные координаты указателя мыши.
    // Поэтому они преобразуются в координаты документа с помощью модуля Geometry.
@@ -115,7 +120,7 @@ Tooltip.prototype.schedule = function(target, e) {
 
    // Реализация слушателя события приводится далее
    function mouseout() {
-      self.hide(); // Скрыть подсказку, если она уже на экране,
+      self.hide(); // Скрыть подсказку, если она уже на экране,=
 
       // отменить все запланированные подсказки
       // и удалить себя, т.к. обработчик запускается единожды

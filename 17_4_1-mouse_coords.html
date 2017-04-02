@@ -29,27 +29,27 @@
      <div id="tooltip">
         Hover over me
      </div>
-     <a href="www.davidflanagan.com"
-      tooltip="good Java/JavaScript blog"
-      onmouseover="Tooltip.schedule(this, event)">
-         David Flanagan's blog
-     </a>
 
      <script>
-      var tooltip = new Tooltip();
 
       var e = document.getElementById('tooltip');
       if (e) {
          //e.style.backgroundColor = "lightblue";
 
          e.onmouseenter = function() {
-            tooltip.show('This is a tooltip!', 100, 100);
+            Tooltip.show('This is a tooltip!', 100, 100);
          }
 
          e.onmouseleave = function() {
-            tooltip.hide();
+            Tooltip.hide();
          }
       }
      </script>
+
+     <a href="www.davidflanagan.com"
+      tooltip="good Java/JavaScript blog"
+      onmouseover="tooltip.schedule(this, event)">
+         David Flanagan's blog
+     </a>
   </body>
 </html>
