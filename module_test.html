@@ -24,6 +24,15 @@
       }
       document.write(obj2.current);
       document.write('<br />');
+
+      var obj3 = new Object();
+      try {
+         obj3.name = 'Jamyle';
+      } catch(e) {
+         obj1.name = new String('Jamyle');
+      }
+      document.write(obj3.name);
+      document.write('<br />');
     </script>
   </body>
 </html>
