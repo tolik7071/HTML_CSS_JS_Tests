@@ -1,0 +1,29 @@
+<html lang="ru" version="1">
+  <head>
+    <title>Тестовая страница #1</title>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <meta http-equiv="refresh" content="10" />
+    <meta name="author" content="Anatoliy Goodz" />
+    <meta name="keywords" lang="en" content="Test page" />
+  </head>
+  <style>
+  </style>
+  <body>
+     <script src="Drag.js">
+     </script>
+     <!   Подключить сценарий Drag.js   >
+     <!   Определить перетаскиваемый элемент   >
+     <div style="position:absolute; left:100px; top:100px; width:250px; background color: white; border: solid black;">
+        <!   Добавить "рукоятку", за которую перетаскивается этот элемент.   >
+        <!   Обратите внимание на атрибут onmousedown.   >
+        <div style="background color: gray; border bottom: dotted black; padding: 3px; font family: sans serif; font weight: bold;" onmousedown="drag(this.parentNode, event);">
+         Перетащи меня <!   Содержимое "заголовка"   >
+        </div>
+
+       <!   Содержимое перетаскиваемого элемента   >
+       <p>Это тест. Тестирование, тестирование и еще раз тестирование.</p>
+       <p>Это тест.</p>
+       <p>Тест.</p>
+     </div>
+  </body>
+</html>

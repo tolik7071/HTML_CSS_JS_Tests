@@ -102,9 +102,9 @@ Tooltip.prototype.schedule = function(target, e) {
 
    // Запланировать появление подсказки.
    var self = this; // Это необходимо для вложенных функций
-   var timer = window.setTimeout(function() {
-      self.show(text, x, y);
-   }, Tooltip.DELAY);
+   var timer = window.setTimeout(
+      function() { self.show(text, x, y); },
+      Tooltip.DELAY);
 
    // Зарегистрировать обработчик onmouseout, чтобы скрыть подсказку
    // или отменить появление запланированной подсказки.
