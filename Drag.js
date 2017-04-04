@@ -18,7 +18,6 @@
  * event: объект Event события mousedown.
  */
 
-alert();
 function drag(elementToDrag, event) {
    // Координаты мыши (в оконных координатах)
    // в точке, откуда начинается перемещение элемента
@@ -26,7 +25,7 @@ function drag(elementToDrag, event) {
 
    // Начальная позиция (в координатах документа) перетаскиваемого элемента.
    // Поскольку elementToDrag позиционируется в абсолютных
-   // координатах, предполагается, что его свойство offsetParent
+   // координатах, предполагается, что его свойство offsetParent
    // ссылается на элемент body документа.
    var origX = elementToDrag.offsetLeft, origY = elementToDrag.offsetTop;
 
@@ -34,25 +33,25 @@ function drag(elementToDrag, event) {
    // координат, мы можем вычислить разницу между ними и использовать
    // ее в функции moveHandler(). Этот прием будет работать,
    // потому что при перетаскивании документ не прокручивается.
-   var deltaX = startX   origX, deltaY = startY   origY;
+   var deltaX = startX - origX, deltaY = startY - origY;
 
-   // Зарегистрировать обработчики событий mousemove и mouseup,
+   // Зарегистрировать обработчики событий mousemove и mouseup,
    // которые последуют вслед за событием mousedown.
-   if (document.addEventListener) { // Модель событий DOM уровня 2
-      // Зарегистрировать перехватывающие обработчики событий
+   if (document.addEventListener) { // Модель событий DOM уровня 2
+      // Зарегистрировать перехватывающие обработчики событий
       document.addEventListener("mousemove", moveHandler, true);
       document.addEventListener("mouseup", upHandler, true);
-   } else if (document.attachEvent) { // Модель событий IE 5+
-      // В модели обработки событий IE перехват событий производится
+   } else if (document.attachEvent) { // Модель событий IE 5+
+      // В модели обработки событий IE перехват событий производится
       // вызовом метода setCapture() элемента, выполняющего перехват.
       elementToDrag.setCapture();
       elementToDrag.attachEvent("onmousemove", moveHandler);
       elementToDrag.attachEvent("onmouseup", upHandler);
       // Интерпретировать событие потери перехвата как событие mouseup.
       elementToDrag.attachEvent("onlosecapture", upHandler);
-   } else { // Модель событий IE 4
+   } else { // Модель событий IE 4
       // В IE 4 мы не можем использовать attachEvent() или setCapture(),
-      // поэтому вставляем обработчики событий непосредственно в объект документа
+      // поэтому вставляем обработчики событий непосредственно в объект документа
       // и уповаем на то, что требуемые события мыши всплывут
       var oldmovehandler = document.onmousemove; // Используется в upHandler()
       var olduphandler = document.onmouseup;
@@ -60,18 +59,13 @@ function drag(elementToDrag, event) {
       document.onmouseup = upHandler;
    }
 
-   // Событие обработано, необходимо прервать его дальнейшее распространение.
-   if (event.stopPropagation) {
-      event.stopPropagation(); // DOM уровня 2
-   } else {
-      event.cancelBubble = true; // IE
-   }
-   // Теперь необходимо предотвратить выполнение действия по умолчанию.
-   if (event.preventDefault) {
-      event.preventDefault(); // DOM уровня 2
-   } else {
-      event.returnValue = false; // IE
-   }
+   // Событие обработано, необходимо прервать его дальнейшее распространение.
+   if (event.stopPropagation) event.stopPropagation( ); // DOM уровня 2
+   else event.cancelBubble = true; // IE
+
+   // Теперь необходимо предотвратить выполнение действия по умолчанию.
+   if (event.preventDefault) event.preventDefault( ); // DOM уровня 2
+   else event.returnValue = false; // IE
 }
 
 /*
@@ -80,6 +74,8 @@ function drag(elementToDrag, event) {
  */
 function moveHandler(e) {
    if (!e) e = window.event; // Модель событий IE
+
+   alert(e);
 
    // Переместить элемент в текущие координаты указателя мыши,
    // при необходимости подстроить его позицию на смещение начального щелчка
