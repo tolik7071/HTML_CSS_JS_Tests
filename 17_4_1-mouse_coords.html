@@ -19,11 +19,12 @@
       font: bold 10pt sans serif;
    }
   </style>
-
-  <script src="Tooltip.js">
-  </script>
-
   <body onload="">
+     <script src="Geometry.js">
+     </script>
+     <script src="Tooltip.js">
+     </script>
+
      <h2>Tooltip</h2>
      <p>Move the mouse over the text below:</p>
      <div id="tooltip">
@@ -31,17 +32,16 @@
      </div>
 
      <script>
-
       var e = document.getElementById('tooltip');
       if (e) {
          //e.style.backgroundColor = "lightblue";
 
          e.onmouseenter = function() {
-            Tooltip.show('This is a tooltip!', 100, 100);
+            tooltip.show('This is a tooltip!', 100, 100);
          }
 
          e.onmouseleave = function() {
-            Tooltip.hide();
+            tooltip.hide();
          }
       }
      </script>

@@ -27,8 +27,9 @@
 
       var obj3 = new Object();
       try {
-         obj3.name = 'Jamyle';
+         obj3.name = 'jamyle';
       } catch(e) {
+         document.write(e.message);
          obj1.name = new String('Jamyle');
       }
       document.write(obj3.name);
