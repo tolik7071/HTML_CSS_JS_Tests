@@ -66,56 +66,54 @@ function drag(elementToDrag, event) {
    // Теперь необходимо предотвратить выполнение действия по умолчанию.
    if (event.preventDefault) event.preventDefault( ); // DOM уровня 2
    else event.returnValue = false; // IE
-}
 
-/*
- * Следующий обработчик перехватывает события mousemove в процессе
- * перетаскивания элемента. Он отвечает за перемещение элемента.
- */
-function moveHandler(e) {
-   if (!e) e = window.event; // Модель событий IE
+   /*
+    * Следующий обработчик перехватывает события mousemove в процессе
+    * перетаскивания элемента. Он отвечает за перемещение элемента.
+    */
+   function moveHandler(e) {
+      if (!e) e = window.event; // Модель событий IE
 
-   alert(e);
+      // Переместить элемент в текущие координаты указателя мыши,
+      // при необходимости подстроить его позицию на смещение начального щелчка
+      elementToDrag.style.left = (e.clientX - deltaX) + "px";
+      elementToDrag.style.top = (e.clientY - deltaY) + "px";
 
-   // Переместить элемент в текущие координаты указателя мыши,
-   // при необходимости подстроить его позицию на смещение начального щелчка
-   elementToDrag.style.left = (e.clientX - deltaX) + "px";
-   elementToDrag.style.top = (e.clientY - deltaY) + "px";
-
-   // и прервать дальнейшее распространение события.
-   if (e.stopPropagation) {
-      e.stopPropagation(); // DOM уровня 2
-   } else {
-      e.cancelBubble = true; // IE
-   }
-}
-
-/*
- * Этот обработчик перехватывает заключительное событие mouseup,
- * которое возникает в конце операции перетаскивания.
- */
-function upHandler(e) {
-   if (!e) e = window.event; // Модель событий IE
-
-   // Отменить регистрацию перехватывающих обработчиков событий.
-   if (document.removeEventListener) { // Модель событий DOM
-      document.removeEventListener("mouseup", upHandler, true);
-      document.removeEventListener("mousemove", moveHandler, true);
-   } else if (document.detachEvent) { // Модель событий IE 5+
-      elementToDrag.detachEvent("onlosecapture", upHandler);
-      elementToDrag.detachEvent("onmouseup", upHandler);
-      elementToDrag.detachEvent("onmousemove", moveHandler);
-      elementToDrag.releaseCapture();
-   } else { // Модель событий IE 4
-      // Восстановить первоначальные обработчики, если они были
-      document.onmouseup = olduphandler;
-      document.onmousemove = oldmovehandler;
+      // и прервать дальнейшее распространение события.
+      if (e.stopPropagation) {
+         e.stopPropagation(); // DOM уровня 2
+      } else {
+         e.cancelBubble = true; // IE
+      }
    }
 
-   // И прервать дальнейшее распространение события.
-   if (e.stopPropagation) {
-      e.stopPropagation(); // DOM уровня 2
-   } else {
-      e.cancelBubble = true; // IE
+   /*
+    * Этот обработчик перехватывает заключительное событие mouseup,
+    * которое возникает в конце операции перетаскивания.
+    */
+   function upHandler(e) {
+      if (!e) e = window.event; // Модель событий IE
+
+      // Отменить регистрацию перехватывающих обработчиков событий.
+      if (document.removeEventListener) { // Модель событий DOM
+         document.removeEventListener("mouseup", upHandler, true);
+         document.removeEventListener("mousemove", moveHandler, true);
+      } else if (document.detachEvent) { // Модель событий IE 5+
+         elementToDrag.detachEvent("onlosecapture", upHandler);
+         elementToDrag.detachEvent("onmouseup", upHandler);
+         elementToDrag.detachEvent("onmousemove", moveHandler);
+         elementToDrag.releaseCapture();
+      } else { // Модель событий IE 4
+         // Восстановить первоначальные обработчики, если они были
+         document.onmouseup = olduphandler;
+         document.onmousemove = oldmovehandler;
+      }
+
+      // И прервать дальнейшее распространение события.
+      if (e.stopPropagation) {
+         e.stopPropagation(); // DOM уровня 2
+      } else {
+         e.cancelBubble = true; // IE
+      }
    }
 }
