@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>OnLoad Test</title>
+      <style></style>
+      <script src="runOnLoad.js"></script>
+      <script>
+         runOnLoad(function() {
+            var e = document.getElementById('div-element');
+            if (e) {
+               e.style.background = "red";
+            }
+         });
+      </script>
+   </head>
+   <body>
+      <div id="div-element" style="height:100px; background-color:grey;">
+         This is a template page.
+      </div>
+   </body>
+</html>
