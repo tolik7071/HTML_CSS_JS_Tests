@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>Custom Events</title>
+      <style></style>
+      <script src="DataEvent.js"></script>
+   </head>
+   <body>
+      <div id="div-element"
+         style="height:100px; background-color:grey;"
+         onclick="DataEvent.send('div-element')">
+         Click to change background color!
+      </div>
+      <script>
+         DataEvent.receive('div-element',
+            function() {
+               var e = document.getElementById('div-element');
+               if (e) {
+                  var min = 0x0000ff;
+                  var max = 0xff0000;
+                  var color = Math.round(Math.random() * (max - min) + min);
+                  e.style.backgroundColor = '#' + color.toString(16);
+               }
+            });
+      </script>
+   </body>
+</html>
