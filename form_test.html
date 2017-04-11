@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>Form Tests</title>
+      <style>
+         #log-panel {
+            /*height:100px;*/
+            background-color:yellow;
+            color:blue;
+            font-size:30px;
+            margin-top:50px;
+            margin-right:50px;
+            margin-left:50px;
+         }
+      </style>
+      <script></script>
+   </head>
+   <body>
+      <form id="main-form">
+         <div>
+            Enter your name:<input type="text"></input>
+         </div>
+         <div>
+            <input type="submit" value="Submit">
+         </div>
+         <div id="log-panel">
+
+         </div>
+      </form>
+      <script>
+         var output = "";
+
+         for (var f in document.forms) {
+            output += "<p>"
+            output += "Form:"
+            output += "</p>"
+         }
+
+         var outputter = document.getElementById('log-panel');
+         if (outputter) {
+            outputter.innerHTML = output;
+         }
+      </script>
+   </body>
+</html>
