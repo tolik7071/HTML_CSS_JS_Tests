@@ -30,10 +30,18 @@
       <script>
          var output = "";
 
-         for (var f in document.forms) {
+         for (var i = 0; i < document.forms.length; i++) {
+            var form = document.forms[i];
             output += "<p>"
-            output += "Form:"
+            output += "Form: " + form.id;
             output += "</p>"
+
+            for (var j = 0; j < form.elements.length; j++) {
+               var element = form.elements[i];
+               output += "<p>"
+               output += element.type;
+               output += "</p>"
+            }
          }
 
          var outputter = document.getElementById('log-panel');
