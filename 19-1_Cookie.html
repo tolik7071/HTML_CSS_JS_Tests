@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="UTF-8">
+      <title>Cookie test</title>
+      <style></style>
+      <script src="Cookie.js"></script>
+      <script>
+         // Создать cookie, который будет использоваться для сохранения
+         // информации о состоянии данной страницы.
+         var cookie = new Cookie("visitordata");
+
+         // Сначала попытаться прочитать данные, хранящиеся в cookie.
+         // Если он еще не существует (или не содержит требуемые данные),
+         // запросить данные у пользователя
+         if (!cookie.name || !cookie.color) {
+            cookie.name = prompt("Введите ваше имя:", "");
+            cookie.color = prompt("Какой цвет вы предпочитаете:", "");
+         }
+
+         // Запомнить число посещений страницы пользователем
+         if (!cookie.visits) cookie.visits = 1;
+         else cookie.visits++;
+
+         // Сохранить данные в cookie, куда включается счетчик числа посещений.
+         // Определить срок жизни cookie в 10 дней. Поскольку атрибут path
+         // не определяется, cookie будет доступен всем страницам того же
+         // каталога и вложенных каталогов. Поэтому необходимо гарантировать,
+         // что имя cookie "visitordata" будет уникальным для всех этих страниц.
+         cookie.store(10);
+
+         // Теперь можно воспользоваться данными, полученными из cookie
+         // (или от пользователя), чтобы приветствовать пользователя по имени,
+         // подсветив приветствие цветом, который предпочитает пользователь.
+         document.write(
+            '<h1 style="color:' + cookie.color + '">' +
+            'Добро пожаловать, ' + cookie.name + '!' + '</h1>' +
+            '<p>Вы посетили нас ' + cookie.visits + ' раз.' +
+            '<button onclick="window.cookie.remove();">Забыть обо мне </button>');
+      </script>
+   </head>
+   <body>
+   </body>
+</html>
