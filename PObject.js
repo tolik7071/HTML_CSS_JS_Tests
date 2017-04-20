@@ -78,4 +78,155 @@
  * для хранения частной информации, такой как номера кредитных карт,
  * паролей или номеров банковских счетов.
  */
-alert();
+
+// Это конструктор
+function PObject(name, defaults, onload) {
+   if (!name) {
+      // Если имя не задано, использовать последний компонент URL
+      name = window.location.pathname;
+      var pos = name.lastIndexOf("/");
+
+      if (pos !=  1)
+         name = name.substring(pos+1);
+   }
+
+   this.$name = name; // Запомнить имя
+
+   // Вызов делегированного частного метода init(),
+   // определяемого реализацией.
+   this.$init(name, defaults, onload);
+};
+
+// Сохраняет текущее состояние объекта PObject на заданное число суток.
+PObject.prototype.save = function(lifetimeInDays) {
+   // Для начала преобразовать свойства объекта в одну строку
+
+   // Изначально строка пустая
+   var s = "";
+
+   // Цикл по свойствам объекта
+   for(var name in this) {
+
+      // Пропустить частные свойства,
+      // имена которых начинаются с $
+      if (name.charAt(0) == "$") continue;
+
+      // Получить значение свойства
+      var value = this[name];
+      // Получить тип свойства
+      var type = typeof value;
+
+      // Пропустить свойства объекты и функции
+      if (type == "object" || type == "function") continue;
+
+      // Отделить свойства знаком &
+      if (s.length > 0) s += "&";
+
+      // Добавить имя свойства и кодированное значение
+      s += name + ':' + encodeURIComponent(value);
+   }
+
+   // Затем вызвать делегированный метод, определяемый реализацией,
+   // для фактического сохранения строки.
+   this.$save(s, lifetimeInDays);
+};
+
+PObject.prototype.forget = function() {
+   // Сначала удалить сериализуемые свойства данного объекта с помощью
+   // тех же критериев отбора свойств, что использовались в методе save().
+   for(var name in this) {
+      if (name.charAt(0) == '$') continue;
+
+      var value = this[name];
+      var type = typeof value;
+      if (type == "function" || type == "object") continue;
+
+      delete this[name]; // Удалить свойство
+   }
+
+   // Затем стереть сохраненные ранее данные, записав пустую строку
+   // и установив время жизни равным 0.
+   this.$save("", 0);
+};
+
+// Преобразовать строку в пары имя/значение и превратить их в
+// Если строка не определена или пустая, скопировать свойства
+// Данный частный метод используется реализациями $init().
+PObject.prototype.$parse = function(s, defaults) {
+   // Если строка отсутствует, использовать объект по умолчанию
+   if (!s) {
+      if (defaults)
+         for(var name in defaults)
+            this[name] = defaults[name];
+
+      return;
+   }
+
+   // Пары имя–значение отделяются символом амперсанда, а имя и значение
+   // внутри каждой пары   символом двоеточия.
+   // Все преобразования выполняются с помощью метода split().
+
+   // Преобразовать строку в массив пар имя/значение
+   var props = s.split('&');
+
+   // Цикл по парам имя/значение
+   for(var i = 0; i < props.length; i++) {
+      var p = props[i];
+      // Разбить каждую пару по символу двоеточия
+      var a = p.split(':');
+      // Декодировать и сохранить в виде свойства
+      this[a[0]] = decodeURIComponent(a[1]);
+   }
+};
+
+/*
+ * Далее находится часть модуля, зависящая от реализации.
+ * Для каждой из реализаций определяется метод $init(), который загружает
+ * хранимые данные, и метод $save(), который эти данные сохраняет.
+ */
+
+// использовать cookies
+PObject.prototype.$init = function(name, defaults, onload) {
+   // Получить все cookies
+   var allcookies = document.cookie;
+
+   // Предположить отсутствие cookie
+   var data = null;
+
+   // Отыскать начало cookie...
+   var start = allcookies.indexOf(name + '=');
+   if (start !=  1) {
+      // Найдено!
+
+      // Пропустить имя
+      start += name.length + 1;
+
+      // Отыскать конец cookie
+      var end = allcookies.indexOf(';', start);
+      if (end ==  1) end = allcookies.length;
+
+      // Извлечь данные
+      data = allcookies.substring(start, end);
+   }
+
+   // Преобразовать значение cookie в свойства
+   this.$parse(data, defaults);
+
+   // Вызвать асинхронно обработчик onload
+   if (onload) {
+      var pobj = this;
+      setTimeout(function() { onload(pobj, name); }, 0);
+   }
+};
+
+PObject.prototype.$save = function(s, lifetimeInDays) {
+   // Имя и значение cookie
+   var cookie = this.$name + '=' + s;
+
+   // Добавить конечную дату
+   if (lifetimeInDays != null)
+      cookie += "; max age=" + (lifetimeInDays * 24 * 60 * 60);
+
+   // Сохранить cookie
+   document.cookie = cookie;
+};
