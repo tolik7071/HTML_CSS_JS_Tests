@@ -3,13 +3,74 @@
    <head>
       <meta charset="UTF-8">
       <title>TODO</title>
-      <style></style>
+      <style>
+         #color-panel {
+            height:100px;
+            background-color:yellow;
+            color:blue;
+            font-size:30px;
+            margin-top:50px;
+            margin-right:50px;
+            margin-left:50px;
+         }
+      </style>
       <script src="PObject.js"></script>
       <script>
-         var cookie = new PObject('', null, function () { alert(); });
+         //var cookie = new PObject('', null, function () { alert(); });
+
+         function getCurrentColor() {
+            var result = 'white';
+
+            var colors = document.getElementById('color-choose');
+            for (var i = 0; i < colors.options.length; i++) {
+               var option = colors.options[i];
+               if (option.selected) {
+                     result = option.value;
+               }
+               continue;
+            }
+
+            return result;
+         };
+
+         function SaveColor() {
+            alert('TODO');
+         };
+
+         function syncColor() {
+            var panel = document.getElementById('color-panel');
+            if (panel) {
+               panel.style.background = getCurrentColor();
+            }
+         };
       </script>
    </head>
-   <body>
-
+   <body onload="syncColor()">
+      <form>
+         <table>
+            <tr>
+               <td>
+                  Your preferred color:
+               </td>
+               <td>
+                  <select id="color-choose" onchange="syncColor()">
+                     <option value="red">Red</option>
+                     <option value="blue">Blue</option>
+                     <option value="green">Green</option>
+                     <option value="yellow">Yellow</option>
+                  </select>
+               </td>
+            </tr>
+            <tr>
+               <td>
+               </td>
+               <td>
+                  <button type="button" onclick="SaveColor()">Save Color</button>
+               </td>
+            </tr>
+         </table>
+         <div id="color-panel">
+         </div>
+      </form>
    </body>
 </html>
