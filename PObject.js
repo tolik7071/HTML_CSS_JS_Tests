@@ -45,8 +45,13 @@
  *        свойства данного объекта будут скопированы во вновь созданный
  *        объект PObject.
  *
- *    onload
- *        TODO
+ *   onload
+ *        Функция, которая вызывается (асинхронно), когда хранимые значения
+ *        загрузятся в объект PObject и будут готовы к использованию.
+ *        Данная функция вызывается с двумя аргументами: ссылкой на объект
+ *        PObject и именем объекта PObject. Эта функция вызывается уже
+ *        после того, как конструктор PObject() вернет управление.
+ *        До этого момента свойства PObject не должны использоваться.
  *
  * Метод PObject.save(lifetimeInDays):
  * Сохраняет свойства объекта PObject и гарантирует, их хранение по меньшей
@@ -84,10 +89,10 @@ function PObject(name, defaults, onload) {
    if (!name) {
       // Если имя не задано, использовать последний компонент URL
       name = window.location.pathname;
-      var pos = name.lastIndexOf("/");
+      var pos = name.lastIndexOf('/');
 
-      if (pos !=  1)
-         name = name.substring(pos+1);
+      if (pos != -1)
+         name = name.substring(pos + 1);
    }
 
    this.$name = name; // Запомнить имя
@@ -102,14 +107,14 @@ PObject.prototype.save = function(lifetimeInDays) {
    // Для начала преобразовать свойства объекта в одну строку
 
    // Изначально строка пустая
-   var s = "";
+   var s = '';
 
    // Цикл по свойствам объекта
    for(var name in this) {
 
       // Пропустить частные свойства,
       // имена которых начинаются с $
-      if (name.charAt(0) == "$") continue;
+      if (name.charAt(0) == '$') continue;
 
       // Получить значение свойства
       var value = this[name];
@@ -117,10 +122,10 @@ PObject.prototype.save = function(lifetimeInDays) {
       var type = typeof value;
 
       // Пропустить свойства объекты и функции
-      if (type == "object" || type == "function") continue;
+      if (type == 'object' || type == 'function') continue;
 
       // Отделить свойства знаком &
-      if (s.length > 0) s += "&";
+      if (s.length > 0) s += '&';
 
       // Добавить имя свойства и кодированное значение
       s += name + ':' + encodeURIComponent(value);
@@ -139,14 +144,14 @@ PObject.prototype.forget = function() {
 
       var value = this[name];
       var type = typeof value;
-      if (type == "function" || type == "object") continue;
+      if (type == 'function' || type == 'object') continue;
 
       delete this[name]; // Удалить свойство
    }
 
    // Затем стереть сохраненные ранее данные, записав пустую строку
    // и установив время жизни равным 0.
-   this.$save("", 0);
+   this.$save('', 0);
 };
 
 // Преобразовать строку в пары имя/значение и превратить их в
@@ -195,7 +200,7 @@ PObject.prototype.$init = function(name, defaults, onload) {
 
    // Отыскать начало cookie...
    var start = allcookies.indexOf(name + '=');
-   if (start !=  1) {
+   if (start != -1) {
       // Найдено!
 
       // Пропустить имя
@@ -225,7 +230,7 @@ PObject.prototype.$save = function(s, lifetimeInDays) {
 
    // Добавить конечную дату
    if (lifetimeInDays != null)
-      cookie += "; max age=" + (lifetimeInDays * 24 * 60 * 60);
+      cookie += '; max age=' + (lifetimeInDays * 24 * 60 * 60);
 
    // Сохранить cookie
    document.cookie = cookie;
