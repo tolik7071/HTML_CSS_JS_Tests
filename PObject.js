@@ -80,14 +80,14 @@
  */
 
 // Это конструктор
-function PObject(name, defaults, onload) {
+   function PObject(name, defaults, onload) {
    if (!name) {
       // Если имя не задано, использовать последний компонент URL
       name = window.location.pathname;
       var pos = name.lastIndexOf("/");
 
       if (pos !=  1)
-         name = name.substring(pos+1);
+         name = name.substring(pos + 1);
    }
 
    this.$name = name; // Запомнить имя
@@ -195,7 +195,7 @@ PObject.prototype.$init = function(name, defaults, onload) {
 
    // Отыскать начало cookie...
    var start = allcookies.indexOf(name + '=');
-   if (start !=  1) {
+   if (start != 1) {
       // Найдено!
 
       // Пропустить имя

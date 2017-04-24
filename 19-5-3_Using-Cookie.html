@@ -16,7 +16,7 @@
       </style>
       <script src="PObject.js"></script>
       <script>
-         //var cookie = new PObject('', null, function () { alert(); });
+         var cookie = new PObject('', null, function () {});
 
          function getCurrentColor() {
             var result = 'white';
@@ -34,7 +34,7 @@
          };
 
          function SaveColor() {
-            alert('TODO');
+            cookie.save();
          };
 
          function syncColor() {
