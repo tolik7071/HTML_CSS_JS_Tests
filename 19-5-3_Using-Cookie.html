@@ -16,7 +16,10 @@
       </style>
       <script src="PObject.js"></script>
       <script>
-         var cookie = new PObject('', null, function () {});
+         var cookie = new PObject(
+            null, // current page name is used
+            {currentColor : 'red'},
+            function () { setCurrentColorFromCookie(); });
 
          function getCurrentColor() {
             var result = 'white';
@@ -34,6 +37,7 @@
          };
 
          function SaveColor() {
+            cookie.currentColor = getCurrentColor();
             cookie.save();
          };
 
@@ -43,9 +47,13 @@
                panel.style.background = getCurrentColor();
             }
          };
+
+         function setCurrentColorFromCookie() {
+            alert(cookie.currentColor);
+         }
       </script>
    </head>
-   <body onload="syncColor()">
+   <body onload="/*syncColor()*/">
       <form>
          <table>
             <tr>
