@@ -4,7 +4,7 @@
       <meta charset="UTF-8">
       <title>TODO</title>
       <style>
-         #output-panel {
+         .output-panel {
             /*height:100px;*/
             background-color:yellow;
             color:blue;
@@ -13,11 +13,20 @@
             margin-right:50px;
             margin-left:50px;
          }
+
+         .wide-table {
+            width: 100%;
+         }
+
+         th, td {
+            border: 1px solid black;
+            width: 50%;
+         }
       </style>
       <script src="./js5examples/20/http.js"></script>
    </head>
    <body>
-      <div id="output-panel">
+      <div class="output-panel">
          Use<br>
          <b><code>python -m SimpleHTTPServer 8000</code></b><br>
          to start HTTP server form current folder.<br><br>
@@ -25,8 +34,33 @@
          <b><code>http://localhost:8000/</code></b><br>
          to load html page
       </div>
+      <div class="output-panel">
+         <table class="wide-table">
+            <tr>
+               <td width>
+                  <textarea id="text-area"></textarea>
+               </td>
+               <td>
+                  <iframe id="frame">
+                  </iframe>
+               </td>
+            </tr>
+         </table>
+      </div>
       <script>
+         function showResponse(text) {
+            var e = document.getElementById('text-area');
+            if (e) {
+               e.value = text;
+            }
 
+            e = document.getElementById('frame');
+            if (e) {
+               e.src = 'http://localhost:8000/template.html';
+            }
+         };
+
+         HTTP.getText('http://localhost:8000/index.html', showResponse);
       </script>
    </body>
 </html>
