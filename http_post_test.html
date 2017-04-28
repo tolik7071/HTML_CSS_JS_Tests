@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="UTF-8">
+      <title>TODO</title>
+      <style>
+         .output-panel {
+            /*height:100px;*/
+            background-color:yellow;
+            color:blue;
+            font-size:20px;
+            margin-top:50px;
+            margin-right:50px;
+            margin-left:50px;
+         }
+      </style>
+      <script src="./js5examples/20/http.js"></script>
+   </head>
+   <body>
+      <div class="output-panel">
+         Use<br>
+         <b><code>python -m SimpleHTTPServer 8000</code></b><br>
+         to start HTTP server form current folder.<br><br>
+         Use<br>
+         <b><code>http://localhost:8000/</code></b><br>
+         to load html page
+      </div>
+      <div class="output-panel">
+         <table>
+            <tr>
+               <td>
+                  <button onclick="StartRequest()">Send Request</button>
+               </td>
+               <td>
+                  <textarea id="text-area" rows="20" cols="80"></textarea>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <script>
+         function StartRequest() {
+               HTTP.post(
+                  'http://localhost:8000/index.html',
+                  {'name' : 'Jonh'},
+                  ResponseHandler,
+                  ErrorHandler
+               );
+         };
+
+         function ResponseHandler(response) {
+            var e = document.getElementById('text-area');
+            if (e) {
+               e.value = 'OK';
+            }
+         };
+
+         function ErrorHandler(status, description) {
+            var e = document.getElementById('text-area');
+            if (e) {
+               e.value = '->' + status + ' : ' + description;
+            }
+         }
+      </script>
+   </body>
+</html>

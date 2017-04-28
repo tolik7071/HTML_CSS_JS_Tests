@@ -1,12 +1,12 @@
 /**
  * linkdetails.js
- * 
- * This unobtrusive JavaScript module adds event handlers to links in a 
+ *
+ * This unobtrusive JavaScript module adds event handlers to links in a
  * document so that they display tooltips when the mouse hovers over them for
  * half a second.  If the link points to a document on the same server as this
- * the source document, the tooltip includes type, size, and date 
+ * the source document, the tooltip includes type, size, and date
  * information obtained with an XMLHttpRequest HEAD request.
- * 
+ *
  * This module requires the Tooltip.js, HTTP.js, and Geometry.js modules
  */
 (function() {  // Anonymous function to hold all our symbols
@@ -18,16 +18,16 @@
     else if (window.attachEvent) window.attachEvent("onload", init);
 
     // To be called when the document loads
-    function init() {  
+    function init() {
         var links = document.getElementsByTagName('a');
         // Loop through all the links, adding event handlers to them
-        for(var i = 0; i < links.length; i++) 
+        for(var i = 0; i < links.length; i++)
             if (links[i].href) addTooltipToLink(links[i]);
     }
 
     // This is the function that adds event handlers
     function addTooltipToLink(link) {
-        // Add event handlers 
+        // Add event handlers
         if (link.addEventListener) {  // Standard technique
             link.addEventListener("mouseover", mouseover, false);
             link.addEventListener("mouseout", mouseout, false);
@@ -52,10 +52,10 @@
             timer = window.setTimeout(showTooltip, 500);
 
             function showTooltip() {
-                // If it is an HTTP link, and if it is from the same host
-                // as this script is, we can use XMLHttpRequest
-                // to get more information about it.
-		if (link.protocol == "http:" && link.host == location.host) { 
+               // If it is an HTTP link, and if it is from the same host
+               // as this script is, we can use XMLHttpRequest
+               // to get more information about it.
+		         if (link.protocol == "http:"/* && link.host == location.host*/) { 
                     // Make an XMLHttpRequest for the headers of the link
                     HTTP.getHeaders(link.href, function(headers) {
                         // Use the headers to build a string of text
@@ -77,7 +77,7 @@
         }
 
         function mouseout(e) {
-            // When the mouse leaves a link, clear any 
+            // When the mouse leaves a link, clear any
             // pending tooltips or hide it if it is shown
             if (timer) window.clearTimeout(timer);
             timer = null;
