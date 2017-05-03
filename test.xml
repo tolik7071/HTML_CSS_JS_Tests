@@ -5,7 +5,10 @@
    <address>
       <name>Joe Tester</name>
       <street>Baker street 5</street>
-      <wrongExtraField/></wrongClosingTag>
+   </address>
+   <address>
+      <name>James Bond</name>
+      <street>Albert Embankment 85</street>
    </address>
 
 </addresses>
