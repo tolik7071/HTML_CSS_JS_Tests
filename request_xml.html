@@ -27,7 +27,11 @@
                function visitElement(parent) {
                   var outputter = document.getElementById("output-area");
                   var temp = outputter.value;
-                  temp += parent.nodeName + '\n';
+                  if (parent.nodeType == 3 /* TEXT_NODE */) {
+                     temp += '\/' + parent.data + '\/' + '\n';
+                  } else {
+                     temp += parent.nodeName + '\n';
+                  }
                   outputter.value = temp;
 
                   for (var i = 0; i < parent.childNodes.length; i++) {
