@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="UTF-8">
+      <title>Regular Expressions Tests</title>
+   </head>
+   <style>
+      textarea {
+         width: 200px;
+         height: 200px;
+      }
+   </style>
+   <body>
+      <div style="background-color:yellow;">
+         Regular Exression
+      </div>
+      <textarea id="outputter">111&#10;&#13;asasa&#09;x  xx&#10;&#13;Last line</textarea>
+      <script>
+         var outputter = document.getElementById('outputter');
+         if (outputter) {
+            var originalText = outputter.value;
+/*            var withoutNewLines = originalText.replace(/\n/gm, '');
+            var withoutWhiteSpaces = withoutNewLines.replace(/\s/g, '');
+            outputter.value = withoutWhiteSpaces;
+ */
+            outputter.value = originalText.replace(/[\n\s]/gm, '');
+         }
+      </script>
+   </body>
+</html>

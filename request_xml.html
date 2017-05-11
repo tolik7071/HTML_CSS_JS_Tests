@@ -4,15 +4,35 @@
       <meta charset="UTF-8">
       <title>TODO</title>
       <style>
-         textarea {
-            height: 300px;
-            width: 300px;
+         table {
+            padding: 5px;
+            border: solid;
+         }
+
+         td, th {
+            border: 2px solid #dddddd;
+            text-align: left;
+            padding: 5px;
+         }
+
+         thead {
+            background-color: #dddddd;
          }
       </style>
    </head>
    <body>
       <div>
-         <textarea id="output-area"></textarea>
+         <table>
+            <thead>
+               <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+               </tr>
+         </thead>
+         <tbody id="data-target">
+
+         </tbody>
+         </table>
          <br>
          <button onclick="LoadXML()">Send Request</button>
       </div>
@@ -21,29 +41,41 @@
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                if (this.readyState == 4 && this.status == 200) {
-                  myFunction(this);
+                  RequestHandler(this);
                }
 
-               function visitElement(parent) {
-                  var outputter = document.getElementById("output-area");
-                  var temp = outputter.value;
-                  if (parent.nodeType == 3 /* TEXT_NODE */) {
-                     temp += '\/' + parent.data + '\/' + '\n';
-                  } else {
-                     temp += parent.nodeName + '\n';
-                  }
-                  outputter.value = temp;
-
-                  for (var i = 0; i < parent.childNodes.length; i++) {
-                        var e = parent.childNodes[i];
-                        visitElement(e);
-                  }
-               }
-
-               function myFunction(xml) {
+               function RequestHandler(xml) {
                   var xmlDoc = xml.responseXML;
-                  for (var i = 0; i < xmlDoc.childNodes.length; i++) {
-                     visitElement(xmlDoc.childNodes[i]);
+
+                  var tbody = document.getElementById('data-target');
+                  tbody.innerHTML = '';
+                  // var listToDelete = tbody.getElementsByTagName('td');
+                  // for (var i = 0; i < tbody.childNodes.length; i++) {
+                  //    tbody.removeChild(tbody.childNodes[i]);
+                  // }
+
+                  var nodes = xmlDoc.getElementsByTagName('address');
+                  for (var i = 0; i < nodes.length; i++) {
+                     // for all addresses...
+
+                     var name = nodes[i].getElementsByTagName('name')[0];
+                     var street = nodes[i].getElementsByTagName('street')[0];
+
+                     // TR
+                     var row = document.createElement("tr");
+
+                     var tdForName = document.createElement("td");
+                     var textName = document.createTextNode(name.innerHTML);
+                     tdForName.appendChild(textName);
+                     row.appendChild(tdForName);
+
+                     var tdForStreet = document.createElement("td");
+                     var textStreet = document.createTextNode(street.innerHTML);
+                     tdForStreet.appendChild(textStreet);
+                     row.appendChild(tdForStreet);
+
+                     tbody.appendChild(row);
+                     //alert(street.innerHTML);
                   }
                }
             }

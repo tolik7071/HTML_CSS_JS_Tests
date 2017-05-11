@@ -8,16 +8,14 @@
       </xs:complexType>
    </xs:element>
 
-<!--
    <xs:element name="address">
-   <xs:complexType>
-   <xs:sequence>
-   <xs:element ref="name" minOccurs='0' maxOccurs='1'/>
-   <xs:element ref="street" minOccurs='0' maxOccurs='1'/>
-   </xs:sequence>
-   </xs:complexType>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="name" minOccurs='0' maxOccurs='1'/>
+            <xs:element ref="street" minOccurs='0' maxOccurs='1'/>
+         </xs:sequence>
+      </xs:complexType>
    </xs:element>
--->
 
    <xs:element name="name" type='xs:string'/>
    <xs:element name="street" type='xs:string'/>
