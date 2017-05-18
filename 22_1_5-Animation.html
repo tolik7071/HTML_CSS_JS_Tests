@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="UTF-8">
+      <title>1...5 Animation</title>
+      <style>
+         div {
+            height: 50px;
+            width: 50px;
+            background-color: yellow;
+            animation: rotate_clockwise 2s infinite;
+         }
+
+         @keyframes rotate_clockwise {
+            from {transform: rotate(0deg);}
+            to {transform: rotate(360deg);}
+         }
+      </style>
+      <script src="js5examples/22/ImageLoop.js"></script>
+      <script>
+         var animation = new ImageLoop(
+            "loop",
+            5,
+            [
+               "images/1.png",
+               "images/2.png",
+               "images/3.png",
+               "images/4.png",
+               "images/5.png",
+            ]
+         );
+      </script>
+   </head>
+   <body onload="animation.start()">
+      <div>
+         <img id="loop" src="">
+      </div>
+   </body>
+</html>
