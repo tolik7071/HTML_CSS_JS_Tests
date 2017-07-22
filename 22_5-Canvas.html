@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="UTF-8">
+      <title>TODO</title>
+      <style></style>
+      <script>
+         window.onload = function() {
+            // Создает рисунок после загрузки документа
+
+            // Получить элемент холста
+            var canvas = document.getElementById("square");
+            // Получить 2D-контекст
+            var context = canvas.getContext("2d");
+            // Цвет заливки - красный
+            context.fillStyle = "#f00";
+            // Залить квадрат
+            context.fillRect(0, 0, 20, 20);
+
+            // Новый элемент холста
+            canvas = document.getElementById("circle");
+            // Получить его контекст
+            context = canvas.getContext("2d");
+            // Цвет заливки голубой
+            context.fillStyle = "#00f";
+            // Начать рисование
+            context.beginPath();
+            // Добавить в рисунок полную окружность с радиусом 5 и с центром в точке (5,5)
+            context.arc(10, 10, 10, 0, 2 * Math.PI, true);
+            // Залить фигуру
+            context.fill();
+
+            canvas = document.getElementById("toDraw");
+            context = canvas.getContext("2d");
+            context.strokeStyle = "red";
+            context.lineWidth = 5;
+            context.beginPath();
+            // Draw diagonal
+            context.moveTo(10, 10);
+            context.lineTo(190, 190);
+            context.stroke();
+
+            // Draw splaine
+            context.beginPath();
+            var startAngle = 0;
+            var endAngle = (Math.PI / 180) * 90;
+            context.arc(100, 100, 50, startAngle, endAngle, false);
+            context.stroke();
+         }
+      </script>
+   </head>
+   <body>
+      Это красный квадрат:
+      <canvas id="square" width="20" height="20"></canvas>.
+      <br>
+      Это голубой круг:
+      <canvas id="circle" width="20" height="20"></canvas>.
+      <div>
+         <canvas style="border:1px solid #000000;"
+            id="toDraw" width="200" height="200"></canvas>
+      </div>
+   </body>
+</html>

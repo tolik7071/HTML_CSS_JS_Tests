@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="UTF-8">
+      <title>SVG Tests</title>
+      <style>
+         table, th, td {
+            background-color: yellow;
+            border: black solid;
+         }
+      </style>
+      <script>
+      </script>
+   </head>
+   <body>
+      <div>
+         <h1>Basic shapes</h1>
+         <table>
+            <tr>
+               <td>
+                  <b>Rectangle</b>
+               </td>
+               <td>
+                  <svg width="300" height="300">
+                     <defs>
+                        <linearGradient id="MyGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                           <stop offset="0%" style="stop-color:rgb(0,255,0);stop-opacity:1"></stop>
+                           <stop offset="50%" style="stop-color:rgb(0,0,255);stop-opacity:1"></stop>
+                           <stop offset="100%" style="stop-color:rgb(0,0,255);stop-opacity:0.8"></stop>
+                        </linearGradient>
+                     </defs>
+                     <rect x="0" y="0" width="300" height="300" fill="url(#MyGradient1)"
+                        stroke="black" stroke-width="10">
+                     </rect>
+                  </svg>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <b>Line</b>
+               </td>
+               <td>
+                  <svg width="300" height="300">
+                     <line x1="20" x2="280" y1="20" y2="280"
+                        stroke="black" stroke-width="20" stroke-linecap="round"
+                        stroke-dasharray="20, 40">
+                     </line>
+                  </svg>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <b>Ellipse</b>
+               </td>
+               <td>
+                  <svg width="300" height="300">
+                     <defs>
+                        <radialGradient id="MyGradient2" gradientUnits="objectBoundingBox"
+                           cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                           <stop offset="0%" stop-color="red"></stop>
+                           <stop offset="50%" stop-color="blue"></stop>
+                           <stop offset="100%" stop-color="red"></stop>
+                        </radialGradient>
+                     </defs>
+                     <ellipse fill="url(#MyGradient2)" stroke="black" stroke-width="5"
+                        cx="150" cy="150" rx="150" ry="150">
+                     </ellipse>
+                  </svg>
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>
