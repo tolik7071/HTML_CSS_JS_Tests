@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="UTF-8">
+      <title>Background Color Test</title>
+      <style>
+         body {
+            background: silver;
+         }
+         div.simple {
+            background-color: yellow;
+            padding: 10px;
+            border: 2px solid red;
+         }
+         div.background-image {
+            margin-top: 10px;
+            width: 400px;
+            height: 250px;
+            background: #00ff00 url("./images/background.jpg");
+            background-size: cover;
+            border: 2px solid red;
+            font-size: 22pt;
+            font-weight: bold;
+            color: rgb(100, 255, 90);
+         }
+         div.background-image2 {
+            margin-top: 10px;
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            background-image: url(./images/1.png);
+         }
+         div.background-image3 {
+            margin-top: 10px;
+            width: 200px;
+            height: 200px;
+            background-color: cyan;
+            background-image: url(./images/1.png);
+            background-position: center;
+            background-repeat: no-repeat;
+         }
+         div.background-image4 {
+            margin-top: 10px;
+            height: 300px;
+            width: 500px;
+            background-image: url(./images/5.png);
+            background-repeat: no-repeat;
+            background-position: 10% -10%;
+            background-size: 100px 100px;
+            border: red 2px solid;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="simple">
+         This is a template page.
+      </div>
+      <div class="background-image">
+         This is a template page.
+      </div>
+      <div class="background-image2">
+      </div>
+      <div class="background-image3">
+      </div>
+      <div class="background-image4">
+      </div>
+   </body>
+</html>

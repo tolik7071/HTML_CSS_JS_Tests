@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="UTF-8">
+      <title>Meerkat Central</title>
+      <!-- base href="http://www.meerkat.web" / -->
+      <style>
+         h1 em {
+            color: red;
+         }
+
+         ul li ul em {
+            color: red;
+         }
+
+         li > em {
+            font-weight: bold;
+            text-decoration: underline;
+         }
+
+         li + li {
+            font-weight: 600;
+         }
+
+         input:focus {
+            background-color: yellow;
+            border: 2px solid black;
+            border-radius: 5px;
+         }
+
+         body *:hover {
+            background: cyan;
+         }
+
+         h1 > strong {
+            background-color: yellow;
+         }
+      </style>
+   </head>
+   <body>
+      <h1>Meerkat <em>Central</em></h1>
+      <p>
+         Welcome to Meerkat <em>Central</em>, the <strong>best meerkat web site
+         on <a href="inet.html">the <em>entire</em> Internet</a></strong>!
+      </p>
+      <ul>
+         <li>We offer:
+            <ul>
+               <li><strong>Detailed information</strong> on how to adopt a meerkat</li>
+               <li>Tips for living with a meerkat</li>
+               <li><em>Fun</em> things to do with a meerkat, including:
+                  <ol>
+                     <li>Playing fetch</li>
+                     <li>Digging for food</li>
+                     <li>Hide and <a href="#"><em>seek</em></a></li>
+                  </ol>
+               </li>
+            </ul>
+         </li>
+         <li>...and so much more!</li>
+      </ul>
+      <p>
+         Questions? <a href="mailto:suricate@meerkat.web">Contact us!</a>
+      </p>
+      <div>
+         <table>
+            <tr>
+               <td>First name:</td>
+               <td><input type="text" name="fname"></td>
+            </tr>
+            <tr>
+               <td>Last name:</td>
+               <td><input type="text" name="lname"></td>
+            </tr>
+         </table>
+      </div>
+      <h1>This is <strong>very</strong> important</h1>
+      <h1>This <em>is <strong>very</strong> important</em></h1>
+   </body>
+</html>

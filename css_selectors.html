@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="UTF-8">
+      <title>Тестирование селекторов</title>
+      <style>
+         hr {
+            height: 5px;
+            background: black;
+         }
+         div {
+            background: yellow;
+         }
+
+         #div2 {
+            font: italic 3em Times, serif;
+         }
+
+         *.warning {
+            font: 2em Times, serif;
+            font-weight: bold;
+            color: red;
+         }
+
+         .help {
+            background: cyan;
+            text-decoration: underline;
+         }
+
+         .help.warning {
+            font: italic 3em serif;
+         }
+
+         div[id] {
+            border: 3px solid;
+            border-color: red;
+         }
+
+         a[href="apple.com"] {
+            font-weight: bolder;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="div1" class="warning help">
+         This is a template page.
+      </div>
+      <hr>
+      <div id="div2 help">
+         This is a template page.
+      </div>
+      <hr>
+      <div id="div3">
+         <p>This is a template page.</p>
+         <p class="help warning">This is a template page.</p>
+         <p>This is a template page.</p>
+      </div>
+      <hr>
+      <div>
+         This is a template page.
+         <p class="warning">This is a template page.</p>
+      </div>
+      <hr>
+      <div>
+         <a href="apple.com" target="#">Go to Apple</a>
+         <br>
+         <a href="microsoft.com" target="#">Go to Microsoft</a>
+         <br>
+         <a href="home.com" target="#">Go to Home</a>
+      </div>
+   </body>
+</html>

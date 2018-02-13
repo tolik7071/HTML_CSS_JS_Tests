@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="UTF-8">
+      <title>Text Attributes</title>
+      <style>
+         p {
+            background-color: yellow;
+            text-indent: 1em;
+            text-align: justify;
+            padding: 0 1em 0 1em;
+         }
+         div.aligned {
+            width: 70%;
+            background-color: cyan;
+            padding: 1em;
+            font-size: 18pt;
+            line-height: 1.5em;
+         }
+         img {
+            vertical-align: middle;
+         }
+         em {
+            vertical-align: super;
+            font-size: 50%;
+         }
+         h1 {
+            word-spacing: 1em;
+            letter-spacing: -0.25em;
+         }
+         table {
+            background-color: rgb(220,220,75);
+            width: 50%;
+         }
+         td {
+            border: solid black 2px;
+            padding: 1em;
+            font-family: monospace;
+            font-size: 24;
+            font-weight: bold;
+         }
+         #capitalize {
+            text-transform: capitalize;
+         }
+         #uppercase {
+            text-transform: uppercase;
+         }
+         #lowercase {
+            text-transform: lowercase;
+         }
+         #underlined {
+            text-decoration: underline;
+         }
+         #overlined {
+            text-decoration: overline;
+         }
+         #line_through {
+            text-decoration: line-through;
+         }
+         #blinked {
+            text-decoration: blink;
+         }
+         h2 {
+            font-size: 32pt;
+            text-shadow: red 3px 0.05em;
+         }
+      </style>
+   </head>
+   <body>
+      <div>
+         <p>Объект Applet представляет Javaапплет, встроенный в HTML документ.
+            Доступ к объектам Applet можно получить с помощью свойства applets[]
+            объекта Document.
+         </p>
+         <p>Свойства объекта Applet представляют общедоступные поля апплета,
+            а методы объекта Applet – общедоступные методы апплета. Не забывайте,
+            что Java – это строго типизированный язык программирования.</p>
+      </div>
+      <div class="aligned">
+         London is the capital city of England. It is the most populous city in
+         the United Kingdom, with a metropolitan area of over 13 million inhabitants.
+         Standing on <strong>the River Thames</strong>,
+         <img src="#" width="100px" height="100px" style="border: 2px solid black;"></img>
+         London has been a major settlement
+         for two millennia, <em>its history going back</em> to its founding by the Romans,
+         who named it Londinium.
+      </div>
+      <div>
+         <h1>The language for building web pages</h1>
+      </div>
+      <div>
+         <table>
+            <tr>
+               <td id="uppercase">uppercase</td>
+            </tr>
+            <tr>
+               <td id="lowercase">lowercase</td>
+            </tr>
+            <tr>
+               <td id="capitalize">capitalize</td>
+            </tr>
+         </table>
+      </div>
+      <div>
+         <p id="underlined">This is a simple text.</p>
+         <p id="overlined">This is a simple text.</p>
+         <p id="line_through">This is <em>a simple</em> text.</p>
+         <p id="blinked">This is a simple text (blink do not work).</p>
+      </div>
+      <div>
+         <h2>The language for programming web pages.</h2>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="UTF-8">
+      <title>Visual Formatting</title>
+      <style>
+         td {
+            border: black solid 1px;
+         }
+         td img {
+            display: block;
+            margin: auto;
+         }
+         li {
+            border: 1px solid black;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            list-style-position: inside;
+         }
+         p.negative {
+            margin-top: -50px;
+         }
+      </style>
+   </head>
+   <body>
+      <div>
+         <table>
+            <tr>
+               <td><img src="./images/5.png" style="display: block; width: 100%;"></td>
+               <td><img src="./images/5.png" style="display: block; width: 50%;"></td>
+               <td><img src="./images/5.png" style="display: block; width: 25%;"></td>
+            </tr>
+         </table>
+      </div>
+      <div style="height: auto; border: 2px solid blue;">
+         <p style="height: 20%; background: yellow;">1111111</p>
+         <p style="height: 80%; background: red;">2222222</p>
+      </div>
+      <div>
+         <li>1</li>
+         <li>2</li>
+         <li>3</li>
+      </div>
+      <div>
+         <p class="negative">This is a paragraph</p>
+         This is a DIV
+      </div>
+   </body>
+</html>
